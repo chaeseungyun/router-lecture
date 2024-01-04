@@ -1,3 +1,5 @@
+import { useState } from "react";
+import { useParams } from "react-router-dom";
 import styled from "styled-components";
 
 const ColorBox = styled.div`
@@ -8,5 +10,17 @@ const ColorBox = styled.div`
 `;
 
 export default function Box() {
-  return <ColorBox color="blue" />;
+  const color = useParams();
+  let backgroundColor = "blue";
+
+  if (!isNaN(color.number)) {
+    if (color.number > 25) {
+      backgroundColor = "black";
+    } else if (color.number > 15) {
+      backgroundColor = "red";
+    }
+  }
+  console.log(color.number);
+
+  return <ColorBox color={backgroundColor} />;
 }
