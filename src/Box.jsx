@@ -1,3 +1,4 @@
+import { useParams } from "react-router-dom/dist";
 import styled from "styled-components";
 
 const ColorBox = styled.div`
@@ -8,5 +9,16 @@ const ColorBox = styled.div`
 `;
 
 export default function Box() {
-  return <ColorBox color="blue" />;
+  const params = useParams();
+  let whatColor = "black";
+  if (params.number < 5) {
+    whatColor = "red";
+  } else if (params.number >= 5 && params.number < 10) {
+    whatColor = "green";
+  } else {
+    whatColor = "blue";
+  }
+  console.log(params.number);
+
+  return <ColorBox color={whatColor} />;
 }
