@@ -1,9 +1,14 @@
 import { useState } from "react";
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet, useNavigate, useParams } from "react-router-dom";
 
 export default function Main() {
+  
+  
   const [number, setNumber] = useState(0);
   const navigate = useNavigate();
+
+  
+
   return (
     <div>
       {number}
@@ -14,8 +19,9 @@ export default function Main() {
           navigate(`/${number}`);
         }}
       >
-        클릭
+        CLICK
       </button>
+
       <Outlet />
     </div>
   );
